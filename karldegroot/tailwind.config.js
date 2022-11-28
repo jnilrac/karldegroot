@@ -6,7 +6,27 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+    },
+    extend: {
+      fontFamily: {
+        "julius-sans-one": ["Julius Sans One", "sans serif"]
+      },
+      colors:{
+        "pink-kd":"#7F1C55",
+        "footer" : "#242424"
+      },
+      height:{
+        "button": "24px",
+        "card" : "400px"
+
+      },
+      width: {
+        "button": "100px",
+        "card" : "300px"
+      }
+    },
   },
   plugins: [],
 }
