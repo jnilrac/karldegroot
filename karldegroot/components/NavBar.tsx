@@ -52,9 +52,9 @@ export const NavBar = ({navLinks}: props) => {
 
        
         return navLinks.map((obj, index) : ReactElement=> {
-                if(obj.url === pathname) {
+                if(obj.url === pathname && pathname !== "/") {
                     return <Link key={obj.key} href={obj.url}><span className="text-pink-kd">{obj.title}</span></Link>;  
-                } else{
+                } else {
                     return <Link key={obj.key} href={obj.url}><span>{obj.title}</span></Link>;  
                 }
                 
@@ -109,7 +109,7 @@ export const NavBar = ({navLinks}: props) => {
                 </div>
                 
                 <OutsideClickHandler onOutsideClick={() => setPhoneMenu('hidden')} >
-                    <div className={`${phoneMenu} w-full h-screen bg-footer/60 absolute  bg-contain inset-0 top-20 rounded py-10 `}>
+                    <div className={`${phoneMenu} w-full h-screen bg-footer absolute  bg-contain inset-0 top-20 rounded py-10 z-20 `}>
                         
 
                             <div className="h-4/6 flex justify-center space-y-8">

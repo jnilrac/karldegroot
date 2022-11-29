@@ -6,6 +6,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xsm:"360px",
+      sm: '480px',
+      md: '768px',
+      mdl: '800px',
+      lg: '1028px',
+      xl: '1440px',
+    },
     container: {
       center: true,
     },
@@ -19,8 +27,8 @@ module.exports = {
       },
       height:{
         "button": "24px",
-        "card" : "400px"
-
+        "card" : "400px",
+        "home-hero": "80rem"
       },
       width: {
         "button": "100px",
