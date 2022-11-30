@@ -11,7 +11,7 @@ export default function RootLayout({ children }: {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className='bg-black relative'>
+      <body className='bg-black'>
       <div className="absolute inset-0  h-20 z-20 ">
         <NavBar
               navLinks={[

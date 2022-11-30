@@ -109,7 +109,7 @@ export const NavBar = ({navLinks}: props) => {
                 </div>
                 
                 <OutsideClickHandler onOutsideClick={() => setPhoneMenu('hidden')} >
-                    <div className={`${phoneMenu} w-full h-screen bg-footer absolute  bg-contain inset-0 top-20 rounded py-10 z-20 `}>
+                    <div className={`${phoneMenu} w-10/11 h-screen bg-footer border-pink-kd border-2 absolute  bg-contain right-2 left-2 bottom-0 top-14  md:top-20 rounded py-10 z-20 `}>
                         
 
                             <div className="h-4/6 flex justify-center space-y-8">

@@ -14,9 +14,6 @@ module.exports = {
       lg: '1028px',
       xl: '1440px',
     },
-    container: {
-      center: true,
-    },
     extend: {
       fontFamily: {
         "julius-sans-one": ["Julius Sans One", "sans serif"]
@@ -28,7 +25,8 @@ module.exports = {
       height:{
         "button": "24px",
         "card" : "400px",
-        "home-hero": "80rem"
+        "home-hero": "80rem",
+        "page-header": "300px"
       },
       width: {
         "button": "100px",
