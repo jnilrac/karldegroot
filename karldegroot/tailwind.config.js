@@ -6,6 +6,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+    },
     screens: {
       xsm:"360px",
       sm: '480px',

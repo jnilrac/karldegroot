@@ -1,8 +1,5 @@
-import { ReactElement } from "react";
-import { MusicPlayer } from "../components/MusicPlayer"
-import { Card } from "../components/Card"
-import { Button } from "../components/Button"
-
+import Link from "next/link";
+import { Button } from "../../../components/Button";
 
 type posts = Array<post>;
 
@@ -82,75 +79,58 @@ const posts: posts = [
     },
 ]
 
+export async function generateStaticParams() {
+    const posts = await getPosts();
+  
+    return posts.map((post: post) => ({
+      slug: post.id,
+    }));
+  }
+
+const getPosts = () => {
+    return posts;
+}
+
+  export default function Page({params}:{params:{lang:string; slug:string; id:string;}}) {
+    const {slug} = params;
 
 
-export default function Page(){    
-    
-    const listPosts = () : Array<ReactElement> => {
-         
-        const threePosts = () =>{
-           const postArray= []
-           postArray.push(posts.at(-1))
-           postArray.push(posts.at(-2))
-           postArray.push(posts.at(-3))
-            return(
-                postArray
-            )
-        }
-      
-            return threePosts().map((post)=>(
-                <Card
-                imgUrl={`${post?.featureImg}`}
-                linkUrl={`blog/${post?.slug}`}
-                text={`${post?.content}`}
-                title={`${post?.title}`}
-                />
-                 ))  
-            
+    const showPost = () : post => {
+        const post = getPosts().find(x => x.slug === slug)
+        return post !== undefined ? post :{ 
+                                            title: "None",
+                                            content: "",
+                                            slug: "",
+                                            featureImg: "",
+                                            id: "",
+                                        }
     }
+
+    const {title, content, featureImg} = showPost();
     return(
         <>
-        <div className="relative ">
-            
-            <div className="absolute top-14 bottom-10 inset-x-10 md:top-20 md:bottom-10 rounded-3xl md:inset-x-20  border-10 border-white bg-black/20 grid grid-cols-1 md:grid-cols-2">
-                <div className="md:flex flex-col justify-center hidden h-full pl-20">
-                    <MusicPlayer url="https://soundcloud.com/karl-de-groot/star-crossed-lovers" />
-                </div>
-                <div className="flex flex-col text-white text-center justify-center text-3xl md:text-4xl lg:text-5xl lg:space-y-10 font-bold" >
-                    <h1 className="text-center">Producer</h1>
-                    <h1 className="text-center text-pink-kd">+</h1>
-                    <h1 className="text-center">Songwriter</h1>
-                </div>
-            </div>
-            <div>
-                <img className="object-cover w-full" src="assets/desktop-homeHero.png" />
-            </div>
-        </div>
-        <div className="h-fit bg-black flex flex-col md:hidden">
+        <div className="container mt-20 flex flex-col space-y-10 lg:space-y-20 mb-20 text-white">
                 <div className="flex justify-center">
-                    <h2 className="text-white text-2xl mt-10 mb-4">New Music</h2>
+                    <h1 className="text-3xl lg:text-5xl font-semibold">{title}</h1>
                 </div>
-                <div className="flex justify-center">
-                    <div className="w-9/12"><MusicPlayer url="https://soundcloud.com/karl-de-groot/star-crossed-lovers"/></div>
-                    
-                </div>
-        </div>
-            <div className="h-fit bg-black flex flex-col">
-                <div className="flex text-center justify-center h-20 pt-8"><h2 className="text-white text-2xl md:text-4xl text-center">Latest Posts</h2></div>
-                <div className="flex justify-center mt-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 space-y-4 lg:space-y-0 ">
-                        {listPosts()}
+                
+                <div className="container w-full lg:w-8/12">
+                    <img  src={featureImg}/>
                     </div>
-                </div>
-                <div className="flex justify-center pt-10">
-                <Button
-                    label="Go to Blog"
-                    url="/blog"
-                    />
+                <div className="w-full flex justify-center">
+                    <div className="w-8/12">{content}</div>
+                
                 </div>
             </div>
+            <div className="flex justify-center my-10"><Link href={`/blog`}>
+                <Button
+                label="Back to Blog"
+                url="/blog"
+                />
+            </Link>
+        </div>
         </>
-        
-
+       
     )
-}
+
+  }

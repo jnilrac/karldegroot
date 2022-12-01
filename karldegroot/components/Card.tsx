@@ -15,7 +15,7 @@ export const Card = ({
     text,
     linkUrl
 }: Props) => {
-
+    const excerpt = text.slice(0,100).concat('...')
   return (
     <>
         <Link href={linkUrl}>
@@ -28,7 +28,7 @@ export const Card = ({
                         {title}
                     </div>
                     <div className='text-white text-sm'>
-                        {text}
+                        {excerpt}
                     </div>
                 </div>
             </button>
