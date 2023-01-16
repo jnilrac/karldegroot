@@ -1,0 +1,188 @@
+{
+    "siteTitle": "Karl de Groot Music",
+    "siteUrl" : "www.karldegroot.com",
+    "header": [
+        {
+            "elementTypeTitle": "Site Brand",
+            "elementType": "string",
+            "addAllowed" : "false",
+            "childTypes" : [],
+            "" : "Karl de Groot"
+        },
+        {
+            "elementTypeTitle": "Nav Links",
+            "elementType": "array",
+            "addAllowed" : "false",
+            "childTypes"  : "Nav Link"
+        },
+        {
+            "elementTypeTitle": "Nav Link",
+            "elementType": "object",
+            "addAllowed" : "true",
+            "childTypes" : [],
+            "interface" : {
+                "title":"string",
+                "url":"string", 
+                "key":"string" 
+            }
+        }
+    ],
+    "footer": [
+        {
+            "elementTypeTitle": "Social Icons",
+            "elementType": "array",
+            "addAllowed" : "false",
+            "childTypes"  : ["Social Icon"]
+        },
+        {
+            "elementTypeTitle": "Social Icon",
+            "elementType": "string",
+            "addAllowed" : "true",
+            "childTypes" : [],
+            "interface" : {
+                "src": "string",
+                "href": "string",
+                "alt": "string"
+            }
+        },
+        {
+            "elementTypeTitle": "Copyright",
+            "elementType": "string",
+            "addAllowed" : "false",
+            "childTypes" : []
+        }
+    ],
+    "pages": [
+        {
+            "pageTitle": "Karl De Groot - Music Production and Songwriting",
+            "pageUrl": "/",
+            "pageElementTypes": [
+               
+                {
+                    "elementTypeTitle": "Hero Text",
+                    "elementType": "string",
+                    "addAllowed" : "false",
+                    "childTypes" : []
+                },
+                {
+                    "elementTypeTitle": "Hero Media",
+                    "elementType": "string",
+                    "addAllowed" : "false",
+                    "childTypes" : []
+                },
+                {
+                    "elementTypeTitle": "Latest Posts Title",
+                    "elementType": "string",
+                    "addAllowed" : "false",
+                    "childTypes" : []
+                },
+                {
+                    "elementTypeTitle": "Blog Button",
+                    "elementType": "object",
+                    "addAllowed" : "false",
+                    "childTypes" : [],
+                    "interface" : {
+                        "text": "string",
+                        "href": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "pageTitle": "Karl De Groot - Music Production and Songwriting Examples",
+            "pageUrl": "/music",
+            "pageElementTypes": [
+                {
+                    "elementTypeTitle": "Title Text",
+                    "elementType": "string",
+                    "addAllowed" : "false",
+                    "childTypes" : []
+                },
+                {
+                    "elementTypeTitle": "Media Array",
+                    "elementType": "array",
+                    "addAllowed" : "false",
+                    "childTypes"  : [
+                        "Media"
+                    ]
+                },
+                {
+                    "elementTypeTitle": "Media",
+                    "elementType": "string",
+                    "addAllowed" : "true",
+                    "childTypes" : []
+                }
+            ]
+        },
+        {
+            "pageTitle": "Karl De Groot - Music Production and Songwriting Blog | Articles About Music Production",
+            "pageUrl": "/blog",
+            "pageElementTypes": [
+                  {
+                    "elementTypeTitle": "Title Text",
+                    "elementType": "string",
+                    "addAllowed" : "false",
+                    "childTypes" : []
+                }
+            ]
+        }
+    ],
+    "blogPost": {
+        "postElelementTypes": [
+            {
+                "elementTypeTitle": "Post Title",
+                "elementType": "string",
+                "addAllowed" : "false",
+                "childTypes" : []
+            },
+            {
+                "elementTypeTitle": "Post Content",
+                "elementType": "array",
+                "addAllowed" : "false",
+                "childTypes"  : [
+                    "Post Image",
+                    "Post Text",
+                    "Post Media"
+                ]
+            },
+            {
+                "elementTypeTitle": "Post Image",
+                "elementType": "object",
+                "addAllowed" : "true",
+                "childTypes" : [],
+                "interface" : {
+                    "src": "string",
+                    "href" : "string",
+                    "alt" : "string"
+                }
+            },
+            {
+                "elementTypeTitle": "Post Text",
+                "elementType": "string",
+                "addAllowed" : "true",
+                "childTypes" : []
+            },
+            {
+                "elementTypeTitle": "Post Media",
+                "elementType": "object",
+                "addAllowed" : "true",
+                "childTypes" : [],
+                "interface" : {
+                    "src": "string",
+                    "href" : "string",
+                    "alt" : "string"
+                }
+            },
+            {
+                "elementTypeTitle": "Blog Button",
+                "elementType": "object",
+                "addAllowed" : "false",
+                "childTypes" : [],
+                "interface" : {
+                    "text": "string",
+                    "href": "string"
+                }
+            }
+        ]
+    }
+}

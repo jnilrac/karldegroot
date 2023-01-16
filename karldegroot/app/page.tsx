@@ -114,7 +114,7 @@ export default function Page(){
             
             <div className="absolute top-14 bottom-10 inset-x-10 md:top-20 md:bottom-10 rounded-3xl md:inset-x-20  border-10 border-white bg-black/20 grid grid-cols-1 md:grid-cols-2">
                 <div className="md:flex flex-col justify-center hidden h-full pl-20">
-                    <MusicPlayer url="https://soundcloud.com/karl-de-groot/star-crossed-lovers" />
+                    <MusicPlayer url="https://soundcloud.com/karl-de-groot/you-cant-change-me-karl-de-groot-remix" />
                 </div>
                 <div className="flex flex-col text-white text-center justify-center text-3xl md:text-4xl lg:text-5xl lg:space-y-10 font-bold" >
                     <h1 className="text-center">Producer</h1>
@@ -131,7 +131,7 @@ export default function Page(){
                     <h2 className="text-white text-2xl mt-10 mb-4">New Music</h2>
                 </div>
                 <div className="flex justify-center">
-                    <div className="w-9/12"><MusicPlayer url="https://soundcloud.com/karl-de-groot/star-crossed-lovers"/></div>
+                    <div className="w-9/12"><MusicPlayer url="https://soundcloud.com/karl-de-groot/you-cant-change-me-karl-de-groot-remix"/></div>
                     
                 </div>
         </div>

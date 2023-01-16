@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Button } from "../../../components/Button";
+import { Card } from "../../../components/Card";
+import { ReactElement  } from "react";
 
 type posts = Array<post>;
 
@@ -91,9 +93,30 @@ const getPosts = () => {
     return posts;
 }
 
-  export default function Page({params}:{params:{lang:string; slug:string; id:string;}}) {
+  export default function Page({params}:{params:{slug:string; id:string;}}) {
     const {slug} = params;
-
+    const listPosts = () : Array<ReactElement> => {
+         
+        const threePosts = () =>{
+           const postArray= []
+           postArray.push(posts.at(-1))
+           postArray.push(posts.at(-2))
+           postArray.push(posts.at(-3))
+            return(
+                postArray
+            )
+        }
+      
+            return threePosts().map((post)=>(
+                <Card
+                imgUrl={`${post?.featureImg}`}
+                linkUrl={`blog/${post?.slug}`}
+                text={`${post?.content}`}
+                title={`${post?.title}`}
+                />
+                 ))  
+            
+    }
 
     const showPost = () : post => {
         const post = getPosts().find(x => x.slug === slug)
@@ -122,13 +145,21 @@ const getPosts = () => {
                 
                 </div>
             </div>
-            <div className="flex justify-center my-10"><Link href={`/blog`}>
+
+           <div className="h-fit bg-black flex flex-col">
+                <div className="flex text-center justify-center h-20 pt-8"><h2 className="text-white text-2xl md:text-4xl text-center">Related Posts</h2></div>
+                <div className="flex justify-center mt-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 space-y-4 lg:space-y-0 ">
+                        {listPosts()}
+                    </div>
+                </div>
+                <div className="flex justify-center pt-10">
                 <Button
-                label="Back to Blog"
-                url="/blog"
-                />
-            </Link>
-        </div>
+                    label="Go to Blog"
+                    url="/blog"
+                    />
+                </div>
+            </div>
         </>
        
     )

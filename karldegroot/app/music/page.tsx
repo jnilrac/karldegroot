@@ -6,14 +6,8 @@ export default function Page() {
 
     const mediaList: Array<string> = [
         "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers"
+        "https://soundcloud.com/karl-de-groot/the-same-for-you",
+        "https://soundcloud.com/karl-de-groot/you-cant-change-me-karl-de-groot-remix",
     ]
 
     const listMedia = (): Array<ReactElement> => {

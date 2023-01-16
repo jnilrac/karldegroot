@@ -2,10 +2,14 @@
 import '../styles/globals.css';
 import { Footer } from '../components/Footer';
 import { NavBar } from '../components/NavBar';
+import {isConnected, PullFluenceConnect} from '../components/PullFluenceConnect';
+
 
 export default function RootLayout({ children }: {
   children: React.ReactNode;
 }) {
+
+// if (isConnected() === false) return (<PullFluenceConnect/>)
   return (
     <html lang="en">
       <head>
