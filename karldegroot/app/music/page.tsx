@@ -7,7 +7,7 @@ export default function Page() {
     const mediaList: Array<string> = [
         "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
         "https://soundcloud.com/karl-de-groot/the-same-for-you",
-        "https://soundcloud.com/karl-de-groot/you-cant-change-me-karl-de-groot-remix",
+        "https://soundcloud.com/karl-de-groot/david-guetta-morten-feat-raye-you-cant-change-me-karl-de-groot-remix",
     ]
 
     const listMedia = (): Array<ReactElement> => {
@@ -27,7 +27,7 @@ export default function Page() {
             <div>
                 <div className="text-white text-5xl top-40 absolute flex justify-center w-full"><h1>Music</h1></div>
                        
-                <img  className="pt-20 w-full object-cover h=20 h-page-header" src="assets/desktopheader-music.png" />
+                <img  className="pt-20 w-full object-cover h=20 h-page-header" src="/assets/desktopheader-music.png" />
               
             </div>
 

@@ -58,13 +58,18 @@ const getPosts= async () => {
             } = data;
 
             const parsedTableData = JSON.parse(tableDataContent);
-            const result = parsedTableData.find((postSectionType : string ) => postSectionType === "Written Content");
-            console.log(parsedTableData)
+            function isWritten(section: tableDataContent) {
+                return section.postSectionType === "Written Content";
+              }
+            const result = parsedTableData.find(isWritten);
+            console.log(result);
+            const {postSectionContent} = result;
+            //console.log(parsedTableData)
             parsedPosts.push(
                 <Card
                 imgUrl={heroImage}
-                linkUrl={`blog/${slug}`}
-                text={"string"}
+                linkUrl={`blog/${slug}/${postId}`}
+                text={postSectionContent}
                 title={title}
                 />
             )
@@ -83,7 +88,7 @@ const getPosts= async () => {
 
 
 export default async function Page({params}:{params:{slug:string; id:string;}}) {
-    const thisData =  await getPosts();
+    const blogRollData =  await getPosts();
     
     return(
         <>
@@ -91,7 +96,7 @@ export default async function Page({params}:{params:{slug:string; id:string;}}) 
             <div>
                 <div className="text-white text-5xl top-40 absolute flex justify-center w-full"><h1>Blog</h1></div>
                        
-                <img  className="pt-20 w-full object-cover h=20 h-page-header" src="assets/desktop-blogHeader.png" />
+                <img  className="pt-20 w-full object-cover h=20 h-page-header" src="/assets/desktop-blogHeader.png" />
               
             </div>
 
@@ -99,7 +104,7 @@ export default async function Page({params}:{params:{slug:string; id:string;}}) 
             <div className="flex justify-center">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8  my-20">
            
-                {thisData}
+                {blogRollData}
                 </div>
             </div>
            

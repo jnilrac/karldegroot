@@ -17,7 +17,7 @@ interface Props {
             <>
             <div className='flex justify-center'>
                 <div className='flex w-64 md:w-full md:h-72'>
-                    <ReactPlayer color='#7F1C55' height="100%" url={url} />
+                    <ReactPlayer color='#7F1C55' width="100%" height="100%" url={url} />
                 </div> 
             </div>
              

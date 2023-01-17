@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
 
 interface Props {
  imgUrl: string;
@@ -8,14 +10,15 @@ interface Props {
  linkUrl: string;
 }
 
-
 export const Card = ({
     imgUrl,
     title,
     text,
     linkUrl
 }: Props) => {
-    const excerpt = text.slice(0,100).concat('...')
+    const reg1 = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/g;
+    const newText = text.replace(reg1,"");
+    const excerpt = newText.slice(0,100).concat('...')
   return (
     <>
         <Link href={linkUrl}>

@@ -18,27 +18,27 @@ const copyrightDate =new Date().getFullYear();
             <div className='flex bg-black justify-center h-40  pt-10 space-x-2 px-2 md:space-x-8'>
                 <Link href={"/#"} >
                     <button>
-                        <img className='scale-75 md:scale-100' src="assets/MessengerLogo.png" alt="facebook messenger logo" />
+                        <img className='scale-75 md:scale-100' src="/assets/MessengerLogo.png" alt="facebook messenger logo" />
                     </button>                  
                 </Link>
                 <Link href={"/#"} >
                     <button>
-                        <img className='scale-75 md:scale-100' src="assets/InstaLogo.png" alt="instagram logo" />
+                        <img className='scale-75 md:scale-100' src="/assets/InstaLogo.png" alt="instagram logo" />
                     </button>                
                 </Link>
                 <Link href={"/#"} >
                     <button>
-                        <img className='scale-75 md:scale-100' src="assets/TiktokLogo.png" alt="tiktok logo" />
+                        <img className='scale-75 md:scale-100' src="/assets/TiktokLogo.png" alt="tiktok logo" />
                     </button>                
                 </Link>
                 <Link href={"/#"} >
                     <button>
-                        <img className='scale-75 md:scale-100 md:mt-2' src="assets/TwitterLogo.png" alt="twitter logo" />
+                        <img className='scale-75 md:scale-100 md:mt-2' src="/assets/TwitterLogo.png" alt="twitter logo" />
                     </button>                 
                 </Link>
                 <Link href={"/#"} >
                     <button >
-                      <img className='scale-75 md:scale-100 md:mt-1' src="assets/YouTubeLogo.png" alt="youtube logo" />
+                      <img className='scale-75 md:scale-100 md:mt-1' src="/assets/YouTubeLogo.png" alt="youtube logo" />
                     </button>                
                 </Link>    
             </div>

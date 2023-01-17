@@ -1,19 +1,54 @@
 import Link from "next/link";
-import { Button } from "../../../components/Button";
-import { Card } from "../../../components/Card";
+import { Button } from "../../../../components/Button";
+import { Card } from "../../../../components/Card";
 import { ReactElement  } from "react";
-
-type posts = Array<post>;
+import axios from "axios";
+import parse from "html-react-parser";
+//import DOMPurify from "isomorphic-dompurify";
+//type posts = Array<post>;
 
 interface post {
-    title: string;
-    content: string;
-    slug: string;
-    featureImg: string;
-    id: string;
+    postTitle?: string;
+    postContent?: Array<any>;
+    postSlug?: string;
+    postHeroImage?: string;
+    postPostId?: string;
+    postTableDataContent?: Array<newTableData>;
+    postAuthor?: string;
+    postDate_created?: object;
+    postCategory?: string;
+}
+
+type stringValue = string;
+
+interface newTableData {
+    postSectionContent:  string;
+    postSectionType: string;
 }
 
 
+interface responseData {
+    author:responseObj;
+    title: responseObj;
+    slug: responseObj;
+    tableDataContent: responseObj;
+    date_created: timeObj;
+    category: responseObj;
+    heroImage: responseObj;
+}
+
+interface responseObj {
+    stringValue:string;
+}
+interface timeObj {
+    timestampValue: timeObjKeys;
+}
+interface timeObjKeys {
+    seconds: string;
+    nanos: number;
+}
+
+/*
 
 const posts: posts = [
     {
@@ -81,20 +116,61 @@ const posts: posts = [
     },
 ]
 
-export async function generateStaticParams() {
-    const posts = await getPosts();
-  
-    return posts.map((post: post) => ({
-      slug: post.id,
-    }));
-  }
+*/
 
 const getPosts = () => {
-    return posts;
+    //return posts;
 }
 
-  export default function Page({params}:{params:{slug:string; id:string;}}) {
-    const {slug} = params;
+  export default async function Page({params}:{params:{slug:string; postId:string;}}) {
+    
+
+    const getPost= async ()  => {
+        let finalObj: post = {};
+         try {
+           const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/post',
+           {
+             postId: params.postId,
+             slug: params.slug
+           });
+          
+           const responseData : responseData = response.data._fieldsProto;
+          
+    
+           
+             const {
+                 author,
+                 title,
+                 slug,
+                 tableDataContent,
+                 date_created,
+                 category,
+                 heroImage,
+             } = responseData;
+             
+             const parsedTableData = JSON.parse(tableDataContent.stringValue)
+    
+             
+            
+             finalObj = {
+                postAuthor: author.stringValue,
+                postTitle: title.stringValue,
+                postSlug: slug.stringValue,
+                postTableDataContent: parsedTableData,
+                postDate_created: date_created.timestampValue,
+                postCategory: category. stringValue,
+                postHeroImage: heroImage.stringValue,
+             }
+        
+         
+         } catch (error) {
+           console.error(error);
+         }
+         return finalObj;
+    }
+ 
+ /*   
+    
     const listPosts = () : Array<ReactElement> => {
          
         const threePosts = () =>{
@@ -128,20 +204,28 @@ const getPosts = () => {
                                             id: "",
                                         }
     }
+*/
+    //const {title, content, featureImg} = showPost();
 
-    const {title, content, featureImg} = showPost();
+    const post =  await getPost();
+     //console.log(post.postAuthor)
+   const content = post.postTableDataContent?.map((item:any) => {
+        //const cleanItem = parse(DOMPurify.sanitize(item.postSectionContent));
+        const parsed = parse(item.postSectionContent);
+        return parsed;
+    });
     return(
         <>
         <div className="container mt-20 flex flex-col space-y-10 lg:space-y-20 mb-20 text-white">
                 <div className="flex justify-center">
-                    <h1 className="text-3xl lg:text-5xl font-semibold">{title}</h1>
+                    <h1 className="text-3xl lg:text-5xl font-semibold">{post.postTitle}</h1>
                 </div>
                 
                 <div className="container w-full lg:w-8/12">
-                    <img  src={featureImg}/>
+                    <img  src={post.postHeroImage}/>
                     </div>
                 <div className="w-full flex justify-center">
-                    <div className="w-8/12">{content}</div>
+                    <div className="w-8/12 text-white">{content}</div>
                 
                 </div>
             </div>
@@ -150,7 +234,7 @@ const getPosts = () => {
                 <div className="flex text-center justify-center h-20 pt-8"><h2 className="text-white text-2xl md:text-4xl text-center">Related Posts</h2></div>
                 <div className="flex justify-center mt-10">
                     <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 space-y-4 lg:space-y-0 ">
-                        {listPosts()}
+                        
                     </div>
                 </div>
                 <div className="flex justify-center pt-10">
