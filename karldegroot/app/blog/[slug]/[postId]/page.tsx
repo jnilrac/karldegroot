@@ -4,7 +4,9 @@ import { Card } from "../../../../components/Card";
 import { ReactElement  } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
-//import DOMPurify from "isomorphic-dompurify";
+import ReactHtmlParser, { processNodes, convertNodeToElement } from 'react-html-parser';
+import sanitizeHtml from 'sanitize-html';
+
 //type posts = Array<post>;
 
 interface post {
@@ -210,9 +212,42 @@ const getPosts = () => {
     const post =  await getPost();
      //console.log(post.postAuthor)
    const content = post.postTableDataContent?.map((item:any) => {
-        //const cleanItem = parse(DOMPurify.sanitize(item.postSectionContent));
-        const parsed = parse(item.postSectionContent);
-        return parsed;
+        const replace = item.postSectionContent
+        .replace("<ul>", '<ul class="list-disc marker:text-white>"')
+        .replace("<ol>", '<ol class="list-decimal marker:text-white>"')
+        .replace("<li>", '<li></li><li>')
+        .replace("ql-indent-1", 'indent-6')
+        .replace("ql-indent-2", 'indent-14')
+        .replace("ql-indent-3", 'indent-24')
+        .replace("ql-indent-4", 'indent-32')
+        .replace("ql-indent-5", 'indent-40')
+        .replace("ql-indent-6", 'indent-48')
+        .replace("ql-indent-7", 'indent-56')
+        .replace("ql-indent-8", 'indent-64')
+        .replace("ql-align-center", 'text-center')
+        .replace("ql-align-right", 'text-right')
+        .replace("ql-align-justify", 'text-justify')
+        .replace("<h1>", `<h1 class="text-3xl lg:text-5xl font-semibold">`)
+        .replace("<h2>", `<h2 class="text-2xl md:text-4xl font-semibold">`)
+        .replace("<h3>", `<h3 class="text-xl md:text-3xl font-semibold">`)
+        .replace("<h4>", `<h4 class="text-lg md:text-2xl font-semibold">`)
+
+        const pure = sanitizeHtml(replace)
+        if(item.postSectionType === "Subsection Image") {
+
+           return (
+                <div className="flex justify-center m-11">
+                    <img style={{maxWidth: 600}} src={item.postSectionContent}/>
+                </div>
+                
+           )
+           
+        } else {
+            //const parsed = parse(pure);
+            const parsed = ReactHtmlParser(replace)
+            return parsed;
+        }
+        
     });
     return(
         <>
@@ -225,13 +260,15 @@ const getPosts = () => {
                     <img  src={post.postHeroImage}/>
                     </div>
                 <div className="w-full flex justify-center">
-                    <div className="w-8/12 text-white">{content}</div>
+                    <div className="w-8/12 text-white">
+                           {content}
+                    </div>
                 
                 </div>
             </div>
 
            <div className="h-fit bg-black flex flex-col">
-                <div className="flex text-center justify-center h-20 pt-8"><h2 className="text-white text-2xl md:text-4xl text-center">Related Posts</h2></div>
+                <div className="flex text-center justify-center h-20 pt-8"><h2 className="text-white text-2xl md:text-4xl text-center font-semibold">Related Posts</h2></div>
                 <div className="flex justify-center mt-10">
                     <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 space-y-4 lg:space-y-0 ">
                         
