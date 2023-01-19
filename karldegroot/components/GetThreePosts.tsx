@@ -34,13 +34,27 @@ interface data {
 const GetThreePosts= async () => {
   const parsedPosts: any = [];
    try {
+    /*
      const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePosts',
      {
        siteId:"eRCXk6NzV2BHUu4sjqLl"
      });
-    
-     const data = response.data;
+     */
+   
+     const response = await fetch('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePosts', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl"}),
+      next: { revalidate: 10 }
+    });
   
+    
+     const rawResponse = await response.json();
+     const data = rawResponse
+      console.log(data)
    data.map((post: postToParse) =>{
        const {data, postId} = post;
        
@@ -68,6 +82,7 @@ const GetThreePosts= async () => {
            linkUrl={`blog/${slug}/${postId}`}
            text={postSectionContent}
            title={title}
+           key={postId}
            />
        )
    })
