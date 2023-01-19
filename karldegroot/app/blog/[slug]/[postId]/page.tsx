@@ -231,6 +231,7 @@ const getPosts = () => {
         .replace("<h2>", `<h2 class="text-2xl md:text-4xl font-semibold">`)
         .replace("<h3>", `<h3 class="text-xl md:text-3xl font-semibold">`)
         .replace("<h4>", `<h4 class="text-lg md:text-2xl font-semibold">`)
+        .replace("<a", `<a class="blog-link"`)
 
         const pure = sanitizeHtml(replace)
         if(item.postSectionType === "Subsection Image") {

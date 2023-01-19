@@ -24,4 +24,7 @@
       blockquote p {
         display: inline;
       }
+      .blog-link {
+        color:aqua
+      }
 }
