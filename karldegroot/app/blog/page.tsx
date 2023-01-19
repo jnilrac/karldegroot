@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Card } from "../../components/Card";
 import axios from "axios";
+import { headers } from 'next/headers';
 
 
 type posts = Array<post>;
@@ -35,6 +36,7 @@ interface data {
 
 
 const getPosts= async () => {
+    
        const parsedPosts: any = [];
         try {
           const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/posts',
@@ -88,6 +90,8 @@ const getPosts= async () => {
 
 
 export default async function Page({params}:{params:{slug:string; id:string;}}) {
+    const headersList = headers();
+    const referer = headersList.get('referer');
     const blogRollData =  await getPosts();
     
     return(
