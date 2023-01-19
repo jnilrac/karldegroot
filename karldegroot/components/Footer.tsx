@@ -16,27 +16,27 @@ const copyrightDate =new Date().getFullYear();
     <>
         <div className='flex flex-col'>
             <div className='flex bg-black justify-center h-40  pt-10 space-x-2 px-2 md:space-x-8'>
-                <Link href={"/#"} >
+                <Link href={"https://m.me/KarldeGrooti"} >
                     <button>
                         <img className='scale-75 md:scale-100' src="/assets/MessengerLogo.png" alt="facebook messenger logo" />
                     </button>                  
                 </Link>
-                <Link href={"/#"} >
+                <Link href={"https://www.instagram.com/kdegrooti/"} >
                     <button>
                         <img className='scale-75 md:scale-100' src="/assets/InstaLogo.png" alt="instagram logo" />
                     </button>                
                 </Link>
-                <Link href={"/#"} >
+                <Link href={"https://www.tiktok.com/@karldegrooti"} >
                     <button>
                         <img className='scale-75 md:scale-100' src="/assets/TiktokLogo.png" alt="tiktok logo" />
                     </button>                
                 </Link>
-                <Link href={"/#"} >
+                <Link href={"https://twitter.com/KarldeGrooti"} >
                     <button>
                         <img className='scale-75 md:scale-100 md:mt-2' src="/assets/TwitterLogo.png" alt="twitter logo" />
                     </button>                 
                 </Link>
-                <Link href={"/#"} >
+                <Link href={"https://www.youtube.com/@karldegroot"} >
                     <button >
                       <img className='scale-75 md:scale-100 md:mt-1' src="/assets/YouTubeLogo.png" alt="youtube logo" />
                     </button>                

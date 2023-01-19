@@ -6,6 +6,7 @@ import axios from "axios";
 import parse from "html-react-parser";
 import ReactHtmlParser, { processNodes, convertNodeToElement } from 'react-html-parser';
 import sanitizeHtml from 'sanitize-html';
+import GetThreePostsByCategory from "../../../../components/GetThreePostsByCategory";
 
 //type posts = Array<post>;
 
@@ -120,12 +121,10 @@ const posts: posts = [
 
 */
 
-const getPosts = () => {
-    //return posts;
-}
+
 
   export default async function Page({params}:{params:{slug:string; postId:string;}}) {
-    
+   
 
     const getPost= async ()  => {
         let finalObj: post = {};
@@ -171,46 +170,13 @@ const getPosts = () => {
          return finalObj;
     }
  
- /*   
-    
-    const listPosts = () : Array<ReactElement> => {
-         
-        const threePosts = () =>{
-           const postArray= []
-           postArray.push(posts.at(-1))
-           postArray.push(posts.at(-2))
-           postArray.push(posts.at(-3))
-            return(
-                postArray
-            )
-        }
-      
-            return threePosts().map((post)=>(
-                <Card
-                imgUrl={`${post?.featureImg}`}
-                linkUrl={`blog/${post?.slug}`}
-                text={`${post?.content}`}
-                title={`${post?.title}`}
-                />
-                 ))  
-            
-    }
 
-    const showPost = () : post => {
-        const post = getPosts().find(x => x.slug === slug)
-        return post !== undefined ? post :{ 
-                                            title: "None",
-                                            content: "",
-                                            slug: "",
-                                            featureImg: "",
-                                            id: "",
-                                        }
-    }
-*/
-    //const {title, content, featureImg} = showPost();
 
     const post =  await getPost();
-     //console.log(post.postAuthor)
+    const {postCategory} = post;
+    console.log(`post category is ${postCategory}`)
+    const listedPosts = await GetThreePostsByCategory(postCategory)
+    console.log(listedPosts)
    const content = post.postTableDataContent?.map((item:any) => {
         const replace = item.postSectionContent
         .replace("<ul>", '<ul class="list-disc marker:text-white>"')
@@ -252,14 +218,14 @@ const getPosts = () => {
     });
     return(
         <>
-        <div className="container mt-20 flex flex-col space-y-10 lg:space-y-20 mb-20 text-white">
+        <div className="container mt-28 flex flex-col space-y-10 lg:space-y-10 mb-20 text-white">
                 <div className="flex justify-center">
                     <h1 className="text-3xl lg:text-5xl font-semibold">{post.postTitle}</h1>
                 </div>
-                
+                <div className="flex justify-center"> <h4 className="text-lg md:text-2xl font-semibold">By: {post.postAuthor}</h4></div>
                 <div className="container w-full lg:w-8/12">
-                    <img  src={post.postHeroImage}/>
-                    </div>
+                    <img src={post.postHeroImage}/>
+                </div>
                 <div className="w-full flex justify-center">
                     <div className="w-8/12 text-white">
                            {content}
@@ -272,7 +238,7 @@ const getPosts = () => {
                 <div className="flex text-center justify-center h-20 pt-8"><h2 className="text-white text-2xl md:text-4xl text-center font-semibold">Related Posts</h2></div>
                 <div className="flex justify-center mt-10">
                     <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-4 space-y-4 lg:space-y-0 ">
-                        
+                        {listedPosts}
                     </div>
                 </div>
                 <div className="flex justify-center pt-10">

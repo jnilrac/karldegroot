@@ -23,7 +23,7 @@ export const Card = ({
     <>
         <Link href={linkUrl}>
             <button className='w-card h-card border-8 border-pink-kd rounded-3xl overflow-clip '>
-                <div className='object-fill'>
+                <div className='object-fill h-44 overflow-clip'>
                     <img src={imgUrl} />
                 </div>
                 <div className='border-t-pink-kd border-t-8 p-2 bg-black text-center h-full'>
