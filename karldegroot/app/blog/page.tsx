@@ -39,7 +39,7 @@ const getPosts= async () => {
         try {
           const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/posts',
           {
-            siteId:"FHwxQCv8u6ipRAOJjFTM"
+            siteId:"eRCXk6NzV2BHUu4sjqLl"
           });
          
           const data = response.data;

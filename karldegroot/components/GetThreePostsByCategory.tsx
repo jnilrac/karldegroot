@@ -36,7 +36,7 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
    try {
      const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePostsByCategory',
      {
-       siteId:"FHwxQCv8u6ipRAOJjFTM",
+       siteId:"eRCXk6NzV2BHUu4sjqLl",
        category: pfCategory
 
      });
