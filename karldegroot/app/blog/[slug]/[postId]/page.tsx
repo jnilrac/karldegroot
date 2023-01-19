@@ -129,15 +129,29 @@ const posts: posts = [
     const getPost= async ()  => {
         let finalObj: post = {};
          try {
-           const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/post',
+          /* const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/post',
            {
              postId: params.postId,
              slug: params.slug
            });
           
            const responseData : responseData = response.data._fieldsProto;
-          
+          */
+
+           const response = await fetch('https://us-central1-pullfluence-ac815.cloudfunctions.net/post', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({postId: params.postId, slug: params.slug}),
+            next: { revalidate: 10 }
+            });
+        
     
+            const rawResponse = await response.json();
+            const responseData = rawResponse
+           
            
              const {
                  author,
@@ -174,9 +188,9 @@ const posts: posts = [
 
     const post =  await getPost();
     const {postCategory} = post;
-    console.log(`post category is ${postCategory}`)
+   
     const listedPosts = await GetThreePostsByCategory(postCategory)
-    console.log(listedPosts)
+   
    const content = post.postTableDataContent?.map((item:any) => {
         const replace = item.postSectionContent
         .replace("<ul>", '<ul class="list-disc marker:text-white>"')

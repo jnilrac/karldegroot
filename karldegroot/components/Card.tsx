@@ -8,6 +8,7 @@ interface Props {
  title: string;
  text: string;
  linkUrl: string;
+ key: string;
 }
 
 export const Card = ({

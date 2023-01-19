@@ -34,7 +34,7 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
     console.log(`pf category is ${pfCategory}`)
   const parsedPosts: any = [];
    try {
-     const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePostsByCategory',
+   /*  const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePostsByCategory',
      {
        siteId:"eRCXk6NzV2BHUu4sjqLl",
        category: pfCategory
@@ -42,7 +42,21 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
      });
     
      const data = response.data;
-     console.log(data)
+     console.log(data)*/
+     const response = await fetch('https://us-central1-pullfluence-ac815.cloudfunctions.net/posts', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl", category: pfCategory}),
+            next: { revalidate: 10 }
+            });
+        
+    
+    const rawResponse = await response.json();
+    const data = rawResponse
+
    data.map((post: postToParse) =>{
        const {data, postId} = post;
        
@@ -70,6 +84,7 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
            linkUrl={`blog/${slug}/${postId}`}
            text={postSectionContent}
            title={title}
+           key={postId}
            />
        )
    })
