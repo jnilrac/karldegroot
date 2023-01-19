@@ -150,7 +150,7 @@ const posts: posts = [
         
     
             const rawResponse = await response.json();
-            const responseData = rawResponse
+            const responseData = rawResponse._fieldsProto
            
            
              const {
