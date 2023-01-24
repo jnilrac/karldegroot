@@ -49,7 +49,7 @@ const GetThreePosts= async () => {
     
      const rawResponse = await response.json();
      const data = rawResponse
-      console.log(data)
+   
    data.map((post: postToParse) =>{
        const {data, postId} = post;
        
@@ -68,7 +68,7 @@ const GetThreePosts= async () => {
            return section.postSectionType === "Written Content";
          }
        const result = parsedTableData.find(isWritten);
-       console.log(result);
+   
        const {postSectionContent} = result;
      
        parsedPosts.push(

@@ -155,7 +155,7 @@ interface timeObjKeys {
         <>
         <div className="container mt-28 flex flex-col space-y-10 lg:space-y-10 mb-20 text-white">
                 <div className="flex justify-center">
-                    <h1 className="text-3xl lg:text-5xl font-semibold">{post.postTitle}</h1>
+                    <h1 className="text-3xl lg:text-5xl font-semibold text-center">{post.postTitle}</h1>
                 </div>
                 <div className="flex justify-center"> <h4 className="text-lg md:text-2xl font-semibold">By: {post.postAuthor}</h4></div>
                 <div className="container w-full lg:w-8/12">

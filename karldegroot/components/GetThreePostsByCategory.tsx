@@ -31,7 +31,7 @@ interface data {
     heroImage: string;
 }
 const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
-    console.log(`pf category is ${pfCategory}`)
+   
   const parsedPosts: any = [];
    try {
 
@@ -67,7 +67,7 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
            return section.postSectionType === "Written Content";
          }
        const result = parsedTableData.find(isWritten);
-       console.log(result);
+   
        const {postSectionContent} = result;
      
        parsedPosts.push(
