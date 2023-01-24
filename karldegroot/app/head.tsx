@@ -12,6 +12,7 @@ export default function Head() {
     return (
       <>
         <title>{pageTitle}</title>
+        <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
       </>
     );
   }
