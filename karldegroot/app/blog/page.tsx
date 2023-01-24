@@ -39,13 +39,7 @@ const getPosts= async () => {
     
        const parsedPosts: any = [];
         try {
-          /*const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/posts',
-          {
-            siteId:"eRCXk6NzV2BHUu4sjqLl"
-          });
-         
-          const data = response.data;
-          */
+      
 
           const response = await fetch('https://us-central1-pullfluence-ac815.cloudfunctions.net/posts', {
             method: 'POST',
@@ -53,7 +47,7 @@ const getPosts= async () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl"}),
+            body: JSON.stringify({siteId: "rxWFGEMUjyF1M8oEcyCp"}),
             next: { revalidate: 10 }
             });
         

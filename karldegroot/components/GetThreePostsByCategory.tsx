@@ -41,7 +41,7 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl", category: pfCategory}),
+            body: JSON.stringify({siteId: "rxWFGEMUjyF1M8oEcyCp", category: pfCategory}),
             next: { revalidate: 10 }
             });
         
