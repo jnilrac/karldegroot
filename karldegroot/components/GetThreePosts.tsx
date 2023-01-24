@@ -42,7 +42,7 @@ const GetThreePosts= async () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({siteId: "rxWFGEMUjyF1M8oEcyCp"}),
+      body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl"}),
       next: { revalidate: 10 }
     });
   
