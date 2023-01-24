@@ -34,12 +34,7 @@ interface data {
 const GetThreePosts= async () => {
   const parsedPosts: any = [];
    try {
-    /*
-     const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePosts',
-     {
-       siteId:"eRCXk6NzV2BHUu4sjqLl"
-     });
-     */
+ 
    
      const response = await fetch('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePosts', {
       method: 'POST',
@@ -47,7 +42,7 @@ const GetThreePosts= async () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl"}),
+      body: JSON.stringify({siteId: "rxWFGEMUjyF1M8oEcyCp"}),
       next: { revalidate: 10 }
     });
   

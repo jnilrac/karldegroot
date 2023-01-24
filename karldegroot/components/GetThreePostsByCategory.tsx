@@ -34,22 +34,14 @@ const GetThreePostsByCategory= async (pfCategory:string|undefined) => {
     console.log(`pf category is ${pfCategory}`)
   const parsedPosts: any = [];
    try {
-   /*  const response = await axios.post('https://us-central1-pullfluence-ac815.cloudfunctions.net/threePostsByCategory',
-     {
-       siteId:"eRCXk6NzV2BHUu4sjqLl",
-       category: pfCategory
 
-     });
-    
-     const data = response.data;
-     console.log(data)*/
      const response = await fetch('https://us-central1-pullfluence-ac815.cloudfunctions.net/posts', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({siteId: "eRCXk6NzV2BHUu4sjqLl", category: pfCategory}),
+            body: JSON.stringify({siteId: "rxWFGEMUjyF1M8oEcyCp", category: pfCategory}),
             next: { revalidate: 10 }
             });
         
