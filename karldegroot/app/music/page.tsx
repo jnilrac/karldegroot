@@ -5,9 +5,13 @@ import { idText } from "typescript"
 export default function Page() {
 
     const mediaList: Array<string> = [
-        "https://soundcloud.com/karl-de-groot/star-crossed-lovers",
-        "https://soundcloud.com/karl-de-groot/the-same-for-you",
-        "https://soundcloud.com/karl-de-groot/david-guetta-morten-feat-raye-you-cant-change-me-karl-de-groot-remix",
+        "https://soundcloud.com/karl-de-groot/no-chance?in=karl-de-groot/sets/karl-de-groot-portfolio&si=e144fcf851d14d6fb0b114679aab371c&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        "https://soundcloud.com/karl-de-groot/the-bottomless?in=karl-de-groot/sets/karl-de-groot-portfolio&si=1166946f061e45ef849632fd483a86f3&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        "https://soundcloud.com/karl-de-groot/drill-instrumental?in=karl-de-groot/sets/karl-de-groot-portfolio&si=c0ae5bc42f474de284f7cd156a3e5e16&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        "https://soundcloud.com/karl-de-groot/tight-night-instrumental?in=karl-de-groot/sets/karl-de-groot-portfolio&si=e07669926c0148cf82e18790eb4f8cc0&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        "https://soundcloud.com/karl-de-groot/star-crossed?in=karl-de-groot/sets/karl-de-groot-portfolio&si=7e0af50317844677868f8de60bf6f1fe&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        "https://soundcloud.com/karl-de-groot/greatest-prize-final?in=karl-de-groot/sets/karl-de-groot-portfolio&si=eee6517d83084f019d48716859905757&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+
     ]
 
     const listMedia = (): Array<ReactElement> => {

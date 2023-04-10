@@ -22,7 +22,7 @@ export default async function Page(){
    
     const listedPosts = await GetThreePosts()
  
-    const soundcloudUrl = "https://soundcloud.com/karl-de-groot/david-guetta-morten-feat-raye-you-cant-change-me-karl-de-groot-remix?si=5355c12abd2643d2a3b8d88442f29d91&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
+    const soundcloudUrl = "https://soundcloud.com/karl-de-groot/no-chance?in=karl-de-groot/sets/karl-de-groot-portfolio&si=e144fcf851d14d6fb0b114679aab371c&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
     return(
         <>
         <div className="relative ">
